@@ -1,0 +1,29 @@
+class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        // Initialize two pointers - left pointer at start and right pointer at end
+        int l = 0;
+        int r = numbers.length - 1;
+        
+        // Continue until pointers meet
+        while(l < r) {
+            // Calculate sum of numbers at current pointer positions
+            int currentSum = numbers[l] + numbers[r];
+            
+            // If sum is too large, decrease right pointer to try smaller values
+            if(currentSum > target){
+                r--;
+            }
+            // If sum is too small, increase left pointer to try larger values
+            else if (currentSum < target){
+                l++;
+            }
+            // If sum equals target, return indices (adding 1 for 1-based indexing)
+            else {
+                return new int[] {l+1, r+1};
+            }
+        }
+        
+        // If no solution found, return empty array
+        return new int[0];
+    }
+}
